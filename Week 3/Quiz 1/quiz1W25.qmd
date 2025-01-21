@@ -1,0 +1,79 @@
+---
+title: "Quiz 1"
+author: ""
+format: pdf
+---
+
+```{r setup, echo=F}
+library(knitr)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+This quiz is based on: Pierotti, Rachel. (2013). "[Increasing Rejection of Intimate Partner Violence: Evidence of Global Cultural Diffusion](http://dx.doi.org/10.1177/0003122413480363)." *American Sociological Review*, 78: 240-265. 
+
+The Demographic and Health Surveys, initiated in 1992, encompass over 300 surveys across developing nations. These surveys feature standardized questions and interviewer training, allowing for cross-country data comparisons. 
+
+The study illustrates that women with greater exposure to global cultural norms—through urban living, secondary education, or media access—are more inclined to reject intimate partner violence. The dataset the following variables.
+
+| Name            | Description                                                             |
+|-----------------|-------------------------------------------------------------------------|
+| `beat_goesout`  | Percentage of women in each country that think a husband is justified   |
+|                 | to beat his wife if she goes out without telling him.                   |
+| `beat_burnfood` | Percentage of women in each country that think a husband is justified   |
+|                 | to beat his wife if she burns his food.                                 |
+| `no_media`      | Percentage of women in each country that rarely encounter a newspaper,  |
+|                 | radio or television                                                   |
+| `sec_school`    | Percentage of women in each country with secondary or higher education. |
+| `year`          | Year of the survey                                                      |
+| `region`        | Region of the world                                                     |
+| `country`       | Country                                                                 |
+
+```{r}
+ipv <- read.csv("ipv.csv")
+```
+
+**Round all answers to two decimals**
+
+# Question 1
+
+What is the mean percentage of women in Sub-Saharan Africa who think a husband is justified in beating his wife if she goes out without telling him (beat_goesout)? Look at all years in the dataset. 
+
+```{r}
+
+```
+Answer: 
+
+# Question 2
+
+How many entries are there in the dataset from years other than 2005?
+
+```{r}
+
+```
+Answer: 
+
+# Question 3
+Identify which country appears most frequently in the dataset. How many times does it appear?
+
+```{r}
+
+```
+Answer: 6
+
+# Question 4
+What is the difference in the mean of sec_school for countries in the ‘Latin America’ region and the mean of sec_school for countries in the ‘Asia’ region? 
+
+```{r}
+
+```
+Answer: 
+
+# Question 5
+
+What is the difference in the average of beat_burnfood for 2006 and the average of beat_burnfood for 2010? 
+
+```{r}
+
+```
+Answer: 
