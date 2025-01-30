@@ -1,0 +1,96 @@
+---
+title: "Quiz 2"
+author: ""
+format:
+  pdf
+---
+
+```{r setup, echo=F}
+library(knitr)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+Can transphobia be reduced through in-person conversations and perspective-taking exercises, or *active processing*? Two researchers conducted a door-to-door canvassing experiment in South Florida targeting anti-transgender prejudice in order to answer this question. Canvassers held single, approximately 10-minute conversations that encouraged actively taking the perspective of others with voters to see if these conversations could markedly reduce prejudice.  This exercise is based on the following study:
+
+Broockman, David and Joshua Kalla. 2016. "[Durably reducing transphobia: a field experiment on door-to-door canvassing](https://dx.doi.org/10.1126/science.aad9713)." *Science*, Vol. 352, No. 6282, pp. 220-224.
+
+In the experiment, the authors first recruited registered voters ($n=68,378$) via mail for an online baseline survey, presented as the first in a series of surveys. They then randomly assigned respondents of this baseline survey ($n=1,825$) to either a treatment group targeted with the intervention ($n=913$) or a placebo group targeted with a conversation about recycling ($n=912$).  
+
+The canvassers then engaged in a series of strategies previously shown to facilitate active processing under the treatment condition. 
+
+The authors then asked the individuals who came to their doors in either condition ($n=488$) to complete follow-up online surveys via email presented as a continuation of the baseline survey. These follow-up surveys began 3 days, 3 weeks, 6 weeks, and 3 months after the intervention when the baseline survey was also conducted. For the purposes of this exercise, we will be using the `tolerance.t#` variables (where `#` is 0 through 4) as the main outcome variables of interest.  Each records attitudes at a set followup. Higher values indicate higher tolerance, lower values indicate lower tolerance relative to the placebo group. 
+
+ Name                             Description
+ -------------------------------- ----------------------------------------------------------
+ `id`                             Respondent ID
+ `vf_age`                         Age
+ `vf_party`                       Party: `D`=Democrats, `R`=Republicans and `N`=Independents
+ `vf_racename`                    Race: `African American`, `Caucasian`, `Hispanic`
+ `vf_female`                      Gender: `1` if female, `0` if male
+ `treat_ind`                      Treatment assignment: `1`=treatment, `0`=placebo
+ `treatment.delivered`            Intervention was actually delivered (=`1`) vs. was not (=`0`)
+ `tolerance.t0`                   Outcome tolerance variable at Baseline
+ `tolerance.t1`                   (see above) Captured at 3 days after Baseline
+ `tolerance.t2`                   (see above) Captured at 3 weeks after Baseline
+ `tolerance.t3`                   (see above) Captured at 6 weeks after Baseline
+ `tolerance.t4`                   (see above) Captured at 3 months after Baseline
+
+```{r}
+data <- read.csv("transphobia.csv")
+```
+
+## Question 1
+
+How many individuals in the dataset are aged 50 or older and identify as independent?
+
+```{r}
+
+```
+Answer: 
+
+## Question 2
+
+How many women in the treatment group changed their opinion between baseline (`tolerance.t0`) and 3 months after baseline (`tolerance.t4`). We don't care if the treatment was actually delivered.
+
+```{r}
+
+```
+Answer: 
+
+## Question 3
+
+How many men who were in the treatment group have a missing (NA) tolerance score recorded three months after baseline (tolerance.t4)? We don't care if the treatment was actually delivered.
+
+```{r}
+
+```
+Answer: 
+
+## Question 4
+
+Among individuals who are Democrats and who are under the age of 30, what is the standard deviation of  tolerance one month after baseline (tolerance.t1)? We don't care if the treatment was actually delivered.
+
+```{r}
+
+```
+Answer:
+
+## Question 5
+
+Among individuals who identify as Republican and were in the control group, what proportion had an increase in their tolerance score from baseline (tolerance.t0) to two months after baseline (tolerance.t2)? We don't care if the treatment was actually delivered.
+
+```{r}
+
+```
+Answer:
+
+## Question 6
+
+Among individuals who identify as African American, how many who received the treatment had a lower tolerance score at three months after baseline (tolerance.t3) compared to their baseline tolerance score (tolerance.t0)? 
+
+```{r}
+
+```
+
+Answer:
