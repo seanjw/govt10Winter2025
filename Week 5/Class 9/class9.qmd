@@ -1,0 +1,130 @@
+---
+title: "Class 9"
+author: "Sean Westwood"
+format:
+  pdf
+---
+```{r setup, echo=F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+# Exam Practice
+
+Today we will practice some analysis.  You will work on the practice by yourself.  I will answer questions as if this were an exam.
+
+
+**Time management will be important during the midterm.  You should be able to answer the questions below in less than 60 minutes**
+
+We will analyze the relationship between indiscriminate violence and insurgent attacks using data about Russian artillery fire in Chechnya from 2000 to 2005. 
+
+This exercise is based on: Lyall, J. 2009. “[Does Indiscriminate Violence Incite Insurgent Attacks?: Evidence from Chechnya.](http://dx.doi.org/10.1177/0022002708330881)” *Journal of Conflict Resolution* 53(3): 331–62.
+    
+Some believe that indiscriminate violence increases insurgent attacks by creating more cooperative relationships between citizens and insurgents.  Others believe that indiscriminate violence can be effective in suppressing insurgents' activities.  
+
+```{r}
+chechen <- read.csv("chechen.csv")
+```
+
+| Name       | Description                                                                            |
+|------------|----------------------------------------------------------------------------------------|
+| village    | Name of Chechnya village                                                               |
+| groznyy    | Variable indicating whether a village is in Groznyy (equal to 1) or not (equal to 0)   |
+| fire       | Whether Russians struck a village with artillery fire (equal to 1) or not (equal to 0) |
+| deaths     | Estimated number of individuals killed during Russian artillery fire                   |
+| preattack  | The number of insurgent attacks before Russian artillery fire                          |
+| postattack | The number of insurgent attacks after Russian artillery fire                           |
+
+## Question 1
+  
+1.1. How many unique villages were hit by Russian fire?  Note that villages will appear multiple times (one record for each time the Russians fired).
+```{r}
+
+```
+
+Answer:
+
+1.2. Which village had the largest number of deaths across all attacks?
+
+```{r}
+
+```
+Answer: 
+
+## Question 2
+
+2.1. Did Russian artillery result in a greater number of deaths in Groznyy compared to the villages outside of Groznyy? Compute the mean difference in deaths for the two groups.
+```{r}
+
+```
+Answer: 
+
+2.2. Conduct the same comparison but use median differences.
+```{r}
+
+```
+Answer: 
+
+## Question 3
+    
+3.1. Compare the average number of insurgent attacks after Russian fire for villages hit by artillery fire and those that were not hit.
+
+```{r}
+
+```
+Answer: 
+
+## Question 4
+
+4.1. Compute the mean difference in the `diffattack` (the difference between preattack and postattack) variable between villages shelled and villages not shelled.  
+```{r}
+
+```
+Answer: 
+
+## Question 5
+
+5.1. How many villages in the dataset are located in Groznyy?
+
+```{r}
+
+```
+Answer: 
+
+5.2. What is the total number of insurgent attacks (both preattack and postattack) recorded in villages outside of Groznyy?
+
+```{r}
+
+```
+Answer: 
+
+## Question 6
+
+6.1. Compute the proportion of villages that were hit by Russian artillery fire at least once.
+
+```{r}
+
+```
+Answer:
+
+## Question 7
+
+7.1. What is the average number of deaths per attack in villages that were shelled?
+```{r}
+
+```
+Answer:
+
+7.2. What is the maximum number of postattack insurgent attacks recorded in any village?
+```{r}
+
+```
+Answer:
+
+7.3. What proportion of villages where artillery fire occurred had zero deaths reported?
+```{r}
+
+```
+Answer: 
