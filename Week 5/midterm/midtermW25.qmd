@@ -1,0 +1,131 @@
+---
+title: "Midterm"
+author: ""
+format: pdf
+---
+```{r setup, echo=F}
+library(knitr)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+In the United States, political fundraising is crucial to the success and eventual election of politicians. Female politicians, however, report more fundraising difficulties than their male counterparts. Female politicians are also underrepresented in state legislatures across the country. In this exercise, we investigate the presence of potential gender inequalities in campaign finance.
+
+This exercise is in part based on: Barber, Michael, Daniel Butler, and Jessica Preece. 2016. "Gender Inequalities in Campaign Finance." Quarterly Journal of Political Science 11(2): 219-248.
+
+In this paper, the authors attempt to estimate whether female state legislative incumbents have more trouble fundraising than do male legislative incumbents. Observations consist of information on all U.S. state legislative races in which a male and female candidate ran against each other. The data include their winning margin and their current-cycle fundraising. To mitigate concerns about omitted variable bias (women may run in districts that are fundamentally different than districts in which men are the incumbents), the researchers use a variation of a regression discontinuity design (RDD). As with studies of the incumbency effect, the authors argue that those who barely won last cycle won at random, given the closeness of the previous election.
+
+| Name                     | Description                                                                      |
+|--------------------------|----------------------------------------------------------------------------------|
+| `bonica.rid`             | Candidate ID number                                                              |
+| `cycle`                  | Year in which the election was held                                              |
+| `name`                   | Legislator's name                                                                |
+| `cand.gender`            | Legislator's gender                                                              |
+| `Party`                  | Party affiliation (Democrat = 100, Republican = 200)                             |
+| `seat`                   | Whether the legislator ran for upper (state:upper) or lower house (state:lower)  |
+| `running.variable`       | Male candidate vote share minus female candidate vote share in previous election |
+| `total.raised.candidate` | Total funding raised by legislator after winning election                        |
+| `male.money`             | Total raised from male donors                                                    |
+| `female.money`           | Total raised from female donors                                                  |
+| `share.district.total`   | Proportion of total district funding raised by the incumbent                     |
+| `pac.money`              | Total amount raised from PACs                                                    |
+| `individual.money `      | Total amount raised from individuals                                             |
+| `male.winner`            | Did the male candidate win (1) or lose (0)                                       |
+
+**NOTE: THERE ARE MORE COLUMNS IN THE DATAFRAME THAN DESCRIBED ABOVE**
+
+## Data 
+
+```{r}
+campaign <- read.csv("campaign.csv")
+```
+
+** Note: You must round all numeric results to two decimal places **
+
+## Question 1
+
+1. How many candidates were both female and Democrats?
+
+```{r}
+
+```
+Answer:
+
+## Question 2
+
+What is the average amount of money raised by candidates who won their election?
+
+```{r}
+
+```
+Answer: 
+
+## Question 3
+
+On average, what is the difference in total money raised from male and female donors for Republicans running for a seat in `state:lower`?  Report the absolute value of the difference.
+
+```{r}
+
+```
+Answer:
+
+## Question 4
+
+Compute the mean difference in total.raised.candidate between male and female candidates. Report the absolute value of the difference.
+
+```{r}
+
+```
+Answer: 
+
+## Question 5
+
+Identify the election cycle with the highest proportion of female candidates.
+```{r}
+
+```
+Answer: 
+
+## Question 6
+
+Compute the mean amount of PAC money (pac.money) raised by winners and losers separately. By how much does the mean differ between winners and losers?  Report the absolute value of the difference.
+
+```{r}
+
+```
+Answer: 
+
+## Question 7
+
+Find the state with the largest difference in total money raised by Democrats versus Republicans.  What is the absolute value of the difference?
+
+```{r}
+
+```
+Answer: 
+
+## Question 8 
+
+Compute the mean cfscore for candidates in districts where the previous Democratic vote share (pct.dem.last) was greater than 50% vs. those where it was less than 50%. Report the absolute difference between these means.
+
+```{r}
+
+```
+Answer:
+
+## Question 9
+
+Find the district with the highest total amount of money raised. 
+```{r}
+
+```
+Answer: 
+
+## Quesiton 10
+
+On average, how much more did female candidates who won election raise from individual donors compared to PACs? Report the absolute mean difference.
+
+```{r}
+
+```
+Answer: 
