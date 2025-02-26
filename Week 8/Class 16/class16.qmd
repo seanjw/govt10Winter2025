@@ -1,107 +1,95 @@
 ---
-title: "Class 16"
+title: "Class 17"
 author: "Sean Westwood"
-format: pdf
+format:
+  pdf
 ---
-
-```{r setup, include=FALSE}
+```{r setup, echo=F}
+library(knitr)
 library(formatR)
-knitr::opts_chunk$set(echo = TRUE)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
 ```
 
-# Research Assignment Instructions
+# Statistical significance: Confidence intervals
 
-This assignment will have you walk through the process of conducting a research study from start to finish. You will find a dataset, formulate research questions, draft hypotheses, and specify regression models to explore your proposed research questions. 
+## Calculating Confidence intervals
 
-This assignment should be approximately 1-2 single spaced pages.  It should be completed as a group, with each group member submitting their own copy.
+```{r}
+transfer <- read.csv("transfer.csv")
+```
 
+Difference in means: t.test()
 
-## Why does this area merit consideration?
+```{r}
+t.test(transfer$literate91[transfer$pop82 <= median(transfer$pop82)],
+       transfer$literate91[transfer$pop82 >= median(transfer$pop82)])
+```
 
-1. Choose a broad topic that interests you. It could be related to politics, education, economics, social behavior, or any area of social science. In no more than 200 words explain why this is an important topic for social science and what you would want to learn with data.
+Regression: confint() and summary()
 
-## Data
+```{r}
+model <- lm(literate91~pop82, data = transfer)
+confint(model)
+summary(model)
+```
 
-1. Find a publicly available dataset related to your chosen topic. Here are some sources where you can find datasets:
-   - [Kaggle](https://www.kaggle.com/datasets)
-   - [Data.gov](https://www.data.gov/)
-   - [World Bank Data](https://data.worldbank.org/)
-   - [ICPSR](https://www.icpsr.umich.edu/web/pages/)
-   - [Google Dataset Search](https://datasetsearch.research.google.com/)
-2. Download the data and look at what columns are present.
+# Example
 
-## Research Questions
+```{r}
+STAR <- read.csv("STAR.csv")
+```
 
-1. Review your dataset and identify key variables that align with your topic of interest.
-2. Develop at least three research questions that you aim to answer. Your questions should be specific and measurable. For example:
-   - How does level of education affect income?
-   - What factors are associated with high levels of job satisfaction?
-   - Is there a relationship between social media use and conspiratorial thinking?
+| Name       | Description                                                                                     |
+|------------|-------------------------------------------------------------------------------------------------|
+| race       | student's race (White = 1, Black = 2, Asian = 3, Hispanic = 4, Native American = 5, Others = 6) |
+| classtype  | type of kindergarten class (small = 1, regular = 2, regular with aid = 3)                       |
+| g4math     | total scaled score for math portion of fourth grade standardized test                           |
+| g4reading  | total scaled score for reading portion of fourth grade standardized test                        |
+| yearssmall | number of years in small classes                                                                |
+| hsgrad     | high school graduation (did graduate = 1, did not graduate = 0)                                 |
 
-## Hypotheses
+1. We are interested in the difference between reading scores for the small and regular class sizes (excluding regular classes with aide)?  
 
-1. For each research question, draft a hypothesis that you will test. Your hypotheses should be clear and testable statements predicting the relationship between variables. For example:
-   - Higher education levels are associated with higher income.
-   - Job satisfaction is positively correlated with work-life balance.
-   - Increased social media use is associated with higher levels of conspiratorial thinking.
+1.1. What might a hypothesis be?
 
-## Specifying Regression Models
+1.2. What might a null hypothesis be?
 
-**Note: You do NOT have to run these regressions**
+1.3. Is the difference significant? 
 
-1. Identify dependent variable(s) and independent variables for each hypothesis.
-2. Write the regression equation for each hypothesis with Greek notation. For example:
-   - Simple Linear Regression: \( Y = \alpha + \beta_1X + \mu \)
-   - Multiple Linear Regression: \( Y = \alpha + \beta_1X_1 + \beta_2X_2 + \ldots + \beta_nX_n + \mu \)
-3. Also provide R code to run the corresponding models.
+```{r}
+star_sub <- STAR[STAR$classtype == 1 | STAR$classtype == 2,]
 
-## Components
+t.test(star_sub$g4reading[star_sub$classtype == 2], star_sub$g4reading[star_sub$classtype == 1])
 
-Include the following sections:
-
-   - Introduction: Briefly introduce your topic and dataset.
-   - Related Literature: Find at least 2 publications that are related to your questions.  Write a short (100 word) summary of what contributions to science each paper made.
-   - Research Questions: List your research questions.
-   - Hypotheses: Your hypotheses.
-   - Regression Models: Specify the regression models for each hypothesis.
-
----
-
-#### Example
-
-**Topic**: Impact of Education on Income
-
-**Merit**: Understanding the impact of education on income is crucial as it informs policy decisions aimed at reducing income inequality and promoting economic growth. It helps individuals make informed decisions about their educational pursuits and potential career paths, highlighting the long-term financial benefits of higher education. Additionally, it provides insights into how investments in education can contribute to overall societal well-being by fostering a more skilled and productive workforce.
-
-**Dataset**: National Longitudinal Survey of Youth (NLSY)
-
-**Research Questions**:
-
-1. How does the number of years of education affect annual income?
-2. Does the field of study influence income levels?
-3. What is the impact of obtaining a higher degree (e.g., Master's, PhD) on income?
-
-**Hypotheses**:
-
-1. Higher years of education are associated with higher annual income.
-2. Income levels vary significantly by field of study.
-3. Obtaining a higher degree is positively correlated with increased income.
-
-**Regression Models**:
-
-Greek:
-
-1.  \( \text{Income} = \alpha + \beta_1 \text{EducationYears} + \mu \)
-2. \( \text{Income} = \alpha + \beta_1 \text{STEM} + \beta_2 \text{Arts} + \beta_3 \text{Business} +  \mu \)
-
-R:
-
-1. model1 <- lm(Income ~ EducationYears, data = data)
-2. model2 <- lm(Income ~ STEM + Arts + Business, data = data)
-3. model3 <- lm(income ~ HigherDegree + Experience, data = data)
+```
 
 
-## Tips
+2. Repeat question 1, but use math test scores.  Also combine regular and regular with aide classes. 
 
-1. You can find related research using Google Scholar: https://scholar.google.com/
-2. You can enter equations with Google Docs with the following guide: https://support.google.com/docs/answer/160749?hl=en&co=GENIE.Platform%3DDesktop
+2.1. What might a hypothesis be?
+
+2.2. What might a null hypothesis be?
+
+2.3. Is the difference significant? 
+```{r}
+
+```
+
+3.1. Draft a null hypothesis and a hypothesis for differences that might exist between class size and achievement among minorities. 
+
+3.2. Subset the data to just minorities (non-whites) and then run t.test comparing math scores for small classes with regular classes.  Can you reject the null?
+
+```{r}
+
+```
+
+3.3. Interpret your results.
+
+
+## Evaluation
+
+1. On a scale ranging between 1 (Too Hard) and 10 (Too Easy), how was today's class: 
+2. What was the easiest thing to understand?
+3. What was the most difficult thing to understand?
+4. How long did you spend on the assignment outside of class?
