@@ -1,0 +1,102 @@
+---
+title: "Quiz 3"
+format:
+  pdf
+---
+
+# Measuring support for political violence in the United States
+
+```{r setup, echo=F}
+library(knitr)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+How many Americans actually support political violence?  Provocative surveys suggest a very large proportion of Americans, but these data do not align with observed instances of political violence.  Are people offering misleading answers on surveys?  This study suggests that people who are not paying attention to surveys and guess are inflating measured support for violence.  Prior estimates are captured with the `KM measure`.  All other measures were developed by this study.
+
+This exercise is based in part on Westwood, Grimmer, Tyler and Nall, 2022. "Current Research Overstates American Support for Political Violence" *Proceedings of the National Academy of Sciences*
+
+| Variable       | Description                                                      |
+|----------------|------------------------------------------------------------------|
+| pid            | Partisanship of the respondent: "Democrat" or "Republican"       |
+| passed         | Passed engagement test: "Engaged Respondent" or "Disengaged      |
+|                | Respondent"                                                      |
+| km_support     | KM measure: "Not at all", "A little", "A moderate amount",       |
+|                | "A lot", "A great deal"                                          |
+| supportactions | Support measure: 1-5                                             |
+| justified      | Violence justified: 0 or 1                                       |
+| charged        | Should those who commit political violence be charged with a     |
+|                | crime: 0 or 1                                                    |
+| alignment      | Is the party of a shooter the same as the respondent "In-Party   |
+|                | Shooter" or different from the respondent "Out-Party Shooter"    |
+
+
+```{r}
+violence <- read.csv("violence.csv")
+
+```
+
+*Round all results to two decimal places*
+
+## Question 1
+
+1.1. Recode the justified variable into a new variable called justified_factor with 0 = “No” and 1 = “Yes”. Then, subset to engaged respondents.  Next compute the difference in the proportion of “Yes” responses between Democrats and Republicans (Democrats minus Republicans).
+Round the result to two decimals.
+
+```{r}
+
+```
+Answer: 
+
+1.2. Subset so that the data only includes engaged respondents.  What proportion of respondents who think those who commit political violence should be charged with a crime answered `km_support` with "not at all"?
+
+```{r}
+
+```
+Answer: 
+
+1.3. Among Democrats, how much greater is support for shooters who are from the same party as the respondent than for shooters who are from a different party?
+
+```{r}
+
+```
+Answer: 
+
+1.4. Repeat the analysis from question 1.3, but only include engaged respondents.
+
+```{r}
+
+```
+Answer:
+
+1.5. Compute the standard deviation for `supportactions` by each level of `km_support`.  Also calculate the mean for `supportactions` by each level of `km_support`.  Add the standard deviation to the corresponding mean.  What is the value of the largest combination of means and standard deviations? 
+
+```{r}
+
+```
+Answer: 
+
+1.6. Use the `km_support` measure to assess support for violence. What is the difference in mean support for political violence using `km_support` among those who passed the engagement test and those who did not?  For this question recode `km_support` so that "Not at all" is 0 and all other values are 1.  **This is a different from `km_support_re`**
+
+```{r}
+
+```
+Answer: 
+
+1.7. Subset to engaged respondents. Recode `supportactions` so that 1, 2, and 3 are set to 0 and all other values are 1.  Recode `km_support` so that "Not at all" is 0 and all other values are 1.  
+
+What is the difference between the means of these two recoded variables? (subtract supportactions from km_support)
+
+```{r}
+
+```
+Answer
+
+1.8. Recode `supportactions` so that 1, 2, and 3 are set to 0 and all other values are 1. Run a linear regression model with the recoded `supportactions` variable as the dependent measures.  Use `pid` as the independent variable.  What value of recoded `supportactions` would we expect for a Republican?
+
+```{r}
+
+```
+Answer: 
+
+
