@@ -1,0 +1,247 @@
+---
+title: "Government 10: Quantitative Political Analysis"
+author: "Sean Westwood"
+format:
+  beamer:
+    fig_caption: false
+    classoption: "aspectratio=169, t"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Question 1
+
+
+Will this run?  
+
+t.test(mto\$complier[mto\$treatment == 1],  
+mto\$complier[mto$treatment == 0], conf.level = 0.95)
+
+## Question 2
+
+When X is a binary variable, the slope coefficient of a linear regression model with X as a predictor is numerically equivalent to the ________ for the two groups of X.
+
+## Question 3
+
+The t-distribution converges on a normal distribution as the ______________ increases.
+
+## Question 4
+
+Will this run?
+
+results <- round(NA, 10)
+
+## Question 5
+
+When converting a string to a date, what order should the month, year and day be in?
+
+## Question 6
+
+Will this run?
+
+papers\$hispanic[papers\$gender == "male",] <- "Yes"
+
+## Question 7
+Will this run?
+
+a <- 19
+
+b <- 7
+
+a <- b - a
+
+## Question 8
+
+Predicting Obama as the winner of a state where he actually lost is an example of a:
+
+A. false negative  
+B. false positive  
+C. loss  
+D. root-mean-squared error
+
+## Question 9
+
+Will this run?
+
+lm(data\$miles ~ data$efficiency)
+     
+## Question 10
+
+Subtracting the mean of one group from the mean of another group gives us the ____________ of group membership.
+
+## Question 11
+
+What function do we use to split a variable into any N number of even groups?
+
+## Question 12
+
+Will this run?
+
+model.happiness <- lm(mto\$wellbeing_zscore ~ group + complier + site)
+
+## Question 13
+
+Will this run?
+
+model <- lm(y ~ x1, x2, x3, data = df)
+ 
+
+## Question 14
+
+The ____________ is an approximation of the standard deviation of the sampling distribution.
+
+
+## Question 15
+
+Will this code run?  
+
+mto\$treatment <- mto[mto\$group == "control" & mto\$group == "lpv"]
+
+## Question 16
+
+If we had two dummy variables var1 and var2 and we wanted to create a single variable when either were true, would this work?
+
+data\$varnew <- 0  
+data\$varnew[data\$var1 == 1 | data\$var2 == 1] <- 1
+
+## Question 17
+
+To get the number of observations in a vector we use __________ and to get the number of observations in a dataframe we use ___________.
+
+## Question 18
+
+Will this code extract the lower confidence interval from a t-test?
+
+t <- t.test(d\$outcome~d\$group)  
+t$p
+
+## Question 19
+
+For a linear regression model, how do we view p-values of coefficients?  
+
+A. lm(...)  
+B. summary(lm(...))  
+C. coef(lm(...))  
+D. table(lm(...))  
+
+## Question 20
+
+If I am using a regression model to understand the relationship between the percent of the population that is under 25 (IV) and the percent voting in presidential elections (DV), it is impossible to calculate a result where 256% of the population are under 25.  True or false.
+
+## Question 21
+
+Which of the following functions does not automatically remove NA values?
+
+A. lm()  
+B. table()  
+C. mean()  
+D. mode()  
+
+## Question 22
+
+True or false: This identifies the bottom decile:
+
+quantile(data\$vote, probs = .9)
+
+## Question 23
+
+We use which function to load data?
+
+A. read_csv(...)  
+B. read(...)  
+C. open(...)  
+D. read.csv(...)  
+
+## Quesiton 24
+
+Would this test for significant differences in hope for those in an experiment with a treatment and control condition?
+
+t.test(data\$treatment[data\$hope], data\$treatment[data\$hope])
+
+## Question 25
+
+Is it possible to have a confidence interval that includes zero and a p-value that is less than .05?
+
+## Question 26
+
+Will this run?
+
+data <- c("1", "2", "3")  
+mean(data)
+
+## Question 27
+
+You have a dataframe df with missing values. Does this code subset the dataframe to include only rows where there are no missing values in the column age?
+
+df_no_missing_age <- df[!is.na(df$age), ]
+
+## Question 28
+
+Given a dataframe df with columns y, x1, and x2, we run a linear regression of y on x1 and x2 for observations where x1 is greater than 10.  Will this do what we want?
+
+lm(y ~ x1 + x2, data = df[df$x1 > 10, ])
+
+## Question 29
+
+In the context of a linear regression model, the __________ represents the true value of the relationship between the predictor and the response variable in the population, while the __________ represents the value calculated from the sample data.
+
+## Question 30 
+
+___________ is the probability that we observe a value at least as extreme as the one we observed.
+
+## Bonus 1
+
+Who is The Mother of Dragons?
+
+## Bonus 2
+
+Keggy the Keg was created in what year?
+
+
+## Answers
+
+1. Yes
+2. difference-in-means 
+3. N/degrees of freedom
+4. Yes; makes no sense
+5. Year, month, day
+6. No; remove the comma within the brackets
+7. Yes
+8. False positive
+9. Yes
+10. ATE
+
+## Answers
+
+11. quantile()
+12. No; no dataframe specified
+13. No; commas not plus signs
+14. Standard error of sample mean
+15. Yes
+16. Yes
+17. length(); nrow()
+18. No; t\$p.value
+19. summary(lm(...))
+20. false
+
+## Answers
+
+21. mean(); mode()
+22. false; top decile
+23. read.csv(...)
+35. No; many things wrong
+25. No
+26. No; strings not integers
+27. Yes
+28. Yes
+29. Parameter; estimate
+30. P-value
+
+
+## Answers (Bonus)
+
+B1. Daenerys Targaryen
+B2. 2003
+
